@@ -1,6 +1,10 @@
 <script>
 export default {
     name: 'BaseFooter',
+    // props: [ "linkList" ],
+    props: {
+        linkList: Array
+    },
     data() {
         return {
             links: [
@@ -9,17 +13,6 @@ export default {
                 { imgPath: '/images/buy-comics-subscriptions.png', name: "SUBSCRIPTION"},
                 { imgPath: '/images/buy-comics-shop-locator.png', name: "COMIC SHOP LOCATOR"},
                 { imgPath: '/images/buy-dc-power-visa.svg', name: "DC POWER VISA"},
-            ],
-            dcComics: [
-                { text: "Chatachters"}, 
-                { text: "Comic"}, 
-                { text: "Movies"}, 
-                { text: "TV"}, 
-                { text: "Games"},
-                { text: "Collectibles"}, 
-                { text: "Videos"}, 
-                { text: "Fans"},
-                { text: "News"},
             ],
             shop: [
                 { text: "Shop DC"},
@@ -69,7 +62,7 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="my_100 my_bg ">
+        <div class="container-fluid my_bg ">
             <div class="container">
                 <div class="row">
                     <div class="col-4 my_p-50">
@@ -78,7 +71,7 @@ export default {
                                 <h6 class="mb-4 text-light">DC COMICS</h6>
 
                                 <div class="d-flex flex-column">
-                                    <a v-for="link in dcComics" href="">{{ link.text }}</a>
+                                    <a v-for="link in linkList" href="">{{ link.text }}</a>
                                 </div>
                                 
                                 <h6 class="text-light">SHOP</h6>
@@ -111,9 +104,9 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="my_100 my_bg-black">
+        <div class="container-fluid my_bg-black">
             <div class="container">
-                <div class="row justify-content-between my_h12">
+                <div class="row justify-content-between my_h100">
                     <div class="col position-relative p-0">
                         <div class="my_center">
                             <button class="my_btn p-2 text-light ">
@@ -140,12 +133,14 @@ export default {
     </footer>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@use "../styles/partials/mixins" as *;
+
     footer{
         background-color: #0282f9;
     }
     .my_bg-black{
-        background-color: #303030;
+        background-color: $black;
     }
     .my_btn{
         border-color: #0282f9;
@@ -185,9 +180,6 @@ export default {
     }
     .my_m-33{
         margin-left: 33px;
-    }
-    .my_100{
-        width: 100%;
     }
     .my_center{
         margin: 0;
